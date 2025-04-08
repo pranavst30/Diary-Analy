@@ -45,19 +45,21 @@ const features = [
 
 export default async function LandingPage() {
   const advice = await getDailyPrompt();
+  const prompt = advice?.data ?? "My Thoughts Today";
 
   return (
     <div className="relative container mx-auto px-4 pt-16 pb-16">
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto text-center space-y-8">
         <h1 className="text-5xl md:text-7xl lg:text-8xl gradient-title mb-6">
-        Your Space to Grow.  <br /> Your Story to Tell.
+          Your Space to Grow. <br /> Your Story to Tell.
         </h1>
         <p className="text-lg md:text-xl text-orange-800 mb-8">
-        Capture your thoughts, track your productivity, and achieve your goals on your journey in a beautiful, secure space.</p>
+          Capture your thoughts, track your productivity, and achieve your goals on your journey in a beautiful, secure space.
+        </p>
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-t from-orange-50 via-transparent to-transparent pointer-events-none z-10" />
-          <div className="bg-white rounded-2xl  p-4 max-full mx-auto">
+          <div className="bg-white rounded-2xl p-4 max-full mx-auto">
             <div className="border-b border-orange-100 pb-4 mb-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5 text-orange-600" />
@@ -73,7 +75,7 @@ export default async function LandingPage() {
             </div>
             <div className="space-y-4 p-4">
               <h3 className="text-xl font-semibold text-orange-900">
-                {advice ? advice : "My Thoughts Today"}
+                {prompt}
               </h3>
               <Skeleton className="h-4 bg-orange-100 rounded w-3/4" />
               <Skeleton className="h-4 bg-orange-100 rounded w-full" />
@@ -221,7 +223,7 @@ export default async function LandingPage() {
         <Card className="bg-gradient-to-r from-orange-100 to-amber-100">
           <CardContent className="p-12 text-center">
             <h2 className="text-3xl font-bold text-orange-900 mb-6">
-             Begin Your Journey Today
+              Begin Your Journey Today
             </h2>
             <p className="text-lg text-orange-700 mb-8 max-w-2xl mx-auto">
               Join thousands of writers who have already discovered the power of
